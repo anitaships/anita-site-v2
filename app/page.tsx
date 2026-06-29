@@ -83,19 +83,19 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 85% 50% at 50% -6%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.04) 30%, transparent 60%), radial-gradient(circle 50% at 12% -2%, rgba(255,255,255,0.08), transparent 45%)",
+              "radial-gradient(ellipse 80% 60% at 50% 8%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 35%, transparent 62%), radial-gradient(circle 40% at 85% 12%, rgba(255,255,255,0.07), transparent 50%)",
           }}
         />
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.07) 0.7px, transparent 0.7px)",
-            backgroundSize: "24px 24px",
+              "radial-gradient(circle, rgba(255,255,255,0.1) 0.8px, transparent 0.8px)",
+            backgroundSize: "23px 23px",
             maskImage:
-              "radial-gradient(ellipse 115% 80% at 50% 18%, #000 30%, transparent 85%)",
+              "radial-gradient(ellipse 120% 85% at 50% 14%, #000 28%, transparent 82%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 115% 80% at 50% 18%, #000 30%, transparent 85%)",
+              "radial-gradient(ellipse 120% 85% at 50% 14%, #000 28%, transparent 82%)",
           }}
         />
       </div>
