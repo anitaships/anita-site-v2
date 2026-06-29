@@ -43,6 +43,28 @@ body {
   color: #060606;
 }
 
+/* 呼吸感强调色：柠檬→翠绿渐变文字 + 缓慢辉光呼吸（非纯色） */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.82;
+    filter: drop-shadow(0 0 0 rgba(198, 240, 78, 0));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 7px rgba(198, 240, 78, 0.4));
+  }
+}
+
+.accent-breathe {
+  background: linear-gradient(100deg, #d8ff63 0%, #6fe39b 55%, #2fae6f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: breathe 3.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

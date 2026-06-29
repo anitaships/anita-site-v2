@@ -1,6 +1,5 @@
 import Header from "./components/Header";
 import Reveal from "./components/Reveal";
-import CountUp from "./components/CountUp";
 
 const CAPABILITIES = [
   {
@@ -18,35 +17,57 @@ const CAPABILITIES = [
 ];
 
 const RESOURCES = [
-  { t: "Overseas KOL network", d: "Thousands of creators, reachable directly." },
   {
-    t: "Cross-border partnerships",
+    pre: "Overseas ",
+    hi: "KOL network",
+    post: "",
+    d: "Thousands of creators, reachable directly.",
+  },
+  {
+    pre: "Cross-border ",
+    hi: "partnerships",
+    post: "",
     d: "Agencies, channels, co-branded courses — all proven.",
   },
   {
-    t: "Self-built AI automation",
+    pre: "Self-built ",
+    hi: "AI automation",
+    post: "",
     d: "Machines handle the repetitive work; I make the calls.",
   },
   {
-    t: "Social & community, from zero",
+    pre: "",
+    hi: "Social & community",
+    post: ", from zero",
     d: "Stood up from scratch, still running.",
   },
 ];
 
-type Stat = {
-  label: string;
-  sub?: string;
-  text?: string;
-  v?: number;
-  prefix?: string;
-  suffix?: string;
-};
-
-const STATS: Stat[] = [
-  { v: 80, prefix: "~", suffix: "%", label: "Paid conversion" },
-  { text: "30–50%", label: "EDM open rate", sub: "2× industry avg" },
-  { v: 43, prefix: "", suffix: "", label: "AI tools built" },
-  { v: 1000, prefix: "", suffix: "+", label: "Creators in network" },
+const CHANNELS = [
+  {
+    ch: "Agencies",
+    big: "300+",
+    unit: "users",
+    note: "$30K+ subscription from a $1.5K start — ~20× ROI.",
+  },
+  {
+    ch: "KOLs",
+    big: "7M+",
+    unit: "reach",
+    note: "1,000+ visits from a single creator collab.",
+  },
+  {
+    ch: "Community",
+    big: "0 → 335",
+    unit: "members",
+    note: "11 months · 4 automation SOPs. Runs itself.",
+  },
+  {
+    ch: "Email",
+    big: "30–50%",
+    unit: "open rate",
+    note: "2× industry, across the full user base.",
+  },
 ];
 
 const GRAIN =
@@ -78,14 +99,14 @@ export default function Home() {
               </h1>
             </Reveal>
             <Reveal delay={0.18}>
-              <p className="mx-auto mt-9 max-w-2xl text-lg font-light text-muted md:text-xl">
-                Full-funnel user growth &amp; product operations.
+              <p className="mx-auto mt-9 max-w-2xl text-xl font-normal text-ink md:text-2xl">
+                Cross-border user growth × product operations.
               </p>
             </Reveal>
             <Reveal delay={0.24}>
-              <p className="mx-auto mt-3 max-w-2xl text-sm font-light tracking-wide text-faint">
-                Bilingual · AI-native · the output of a whole team, from one
-                person
+              <p className="mx-auto mt-4 max-w-2xl text-sm font-light tracking-wide text-faint">
+                A liberal-arts major who writes her own AI tools — bilingual,
+                AI-native.
               </p>
             </Reveal>
             <Reveal delay={0.32}>
@@ -113,32 +134,79 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───── STATS ───── */}
-        <section className="border-y border-line bg-bg-soft">
-          <div className="mx-auto grid max-w-5xl grid-cols-2 gap-y-12 px-6 py-20 md:grid-cols-4">
-            {STATS.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.08} className="text-center">
-                <div className="text-5xl font-extrabold tracking-[-0.02em] md:text-6xl">
-                  {s.text ? (
-                    s.text
-                  ) : (
-                    <CountUp
-                      value={s.v ?? 0}
-                      prefix={s.prefix ?? ""}
-                      suffix={s.suffix ?? ""}
-                    />
-                  )}
-                </div>
-                <div className="mt-4 text-xs font-light tracking-wide text-faint md:text-sm">
-                  {s.label}
-                </div>
-                {s.sub && (
-                  <div className="mt-1 text-[11px] font-light text-faint/70">
-                    {s.sub}
+        {/* ───── PROOF / RESULTS ───── */}
+        <section id="proof" className="border-y border-line bg-bg-soft">
+          <div className="mx-auto max-w-5xl px-6 py-24">
+            <Reveal>
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
+                Proof
+              </p>
+              <h2 className="mb-14 text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
+                Real channels. Real numbers.
+              </h2>
+            </Reveal>
+            {/* 增长 · 分渠道 */}
+            <p className="mb-5 text-sm font-light text-muted">
+              <span className="font-normal text-ink">Growth, by channel</span> —
+              I pull users in from everywhere, then keep them.
+            </p>
+            <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+              {CHANNELS.map((c, i) => (
+                <Reveal key={c.ch} delay={i * 0.07}>
+                  <div className="h-full bg-bg-soft p-6">
+                    <p className="text-xs uppercase tracking-[0.2em] text-faint">
+                      {c.ch}
+                    </p>
+                    <div className="mt-4 whitespace-nowrap text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
+                      {c.big}
+                    </div>
+                    <p className="mt-1 text-[11px] font-light uppercase tracking-[0.15em] text-faint">
+                      {c.unit}
+                    </p>
+                    <p className="mt-4 text-sm font-light leading-relaxed text-muted">
+                      {c.note}
+                    </p>
                   </div>
-                )}
+                </Reveal>
+              ))}
+            </div>
+
+            {/* 分析 → 产品 的闭环 */}
+            <p className="mb-5 mt-16 text-sm font-light text-muted">
+              <span className="font-normal text-ink">
+                Then I close the loop
+              </span>{" "}
+              — analyze the funnel, fix the product.
+            </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              <Reveal>
+                <div className="h-full rounded-2xl border border-line bg-bg p-8">
+                  <p className="text-xs font-medium uppercase tracking-[0.25em] text-faint">
+                    Analyze
+                  </p>
+                  <p className="mt-5 text-lg font-light leading-relaxed text-muted">
+                    Mapped the full funnel — anonymous → signup → first value →
+                    repeat → paywall → paid. Then emailed the paywall drop-offs to
+                    ask <span className="text-ink">why</span>.
+                  </p>
+                </div>
               </Reveal>
-            ))}
+              <Reveal delay={0.1}>
+                <div className="h-full rounded-2xl border border-line bg-bg p-8">
+                  <p className="text-xs font-medium uppercase tracking-[0.25em] text-faint">
+                    Ship
+                  </p>
+                  <p className="mt-5 text-lg font-light leading-relaxed text-muted">
+                    Their answers became product —{" "}
+                    <span className="text-ink">
+                      fixed onboarding, re-added cut features
+                    </span>{" "}
+                    users needed — while driving upgrades, payments &amp; credit
+                    top-ups.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </section>
 
@@ -181,7 +249,13 @@ export default function Home() {
         </section>
 
         {/* ───── WHAT I BRING ───── */}
-        <section className="border-y border-line bg-bg-soft">
+        <section
+          className="border-y border-line bg-bg-soft"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 55% 45% at 82% 28%, rgba(47,174,111,0.07), transparent 70%)",
+          }}
+        >
           <div className="mx-auto max-w-5xl px-6 py-32">
             <Reveal>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
@@ -194,10 +268,12 @@ export default function Home() {
             </Reveal>
             <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
               {RESOURCES.map((r, i) => (
-                <Reveal key={r.t} delay={i * 0.08}>
+                <Reveal key={r.hi} delay={i * 0.08}>
                   <div className="h-full bg-bg-soft p-9 transition-colors duration-300 hover:bg-white/[0.03]">
                     <h3 className="text-2xl font-bold tracking-[-0.01em]">
-                      {r.t}
+                      {r.pre}
+                      <span className="accent-breathe">{r.hi}</span>
+                      {r.post}
                     </h3>
                     <p className="mt-3 text-sm font-light text-muted">{r.d}</p>
                   </div>
