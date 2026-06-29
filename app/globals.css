@@ -65,6 +65,44 @@ body {
   animation: breathe 3.6s ease-in-out infinite;
 }
 
+/* 首屏：绿色星云漂浮 + 文字悬浮（宇宙空间感） */
+@keyframes drift1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(38px, -30px) scale(1.14);
+  }
+}
+@keyframes drift2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-32px, 26px) scale(1.1);
+  }
+}
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+.animate-drift1 {
+  animation: drift1 15s ease-in-out infinite;
+}
+.animate-drift2 {
+  animation: drift2 19s ease-in-out infinite;
+}
+.animate-floaty {
+  animation: floaty 7s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
