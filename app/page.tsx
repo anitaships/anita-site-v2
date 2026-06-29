@@ -77,36 +77,36 @@ export default function Home() {
   return (
     <>
       <Header />
+      {/* 空间背景：近黑 + 顶部白光 + 点阵 + 暗角（黑白光雾分层；绿色只做强调） */}
+      <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#0a0a0c" }}>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 85% 50% at 50% -6%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.04) 30%, transparent 60%), radial-gradient(circle 50% at 12% -2%, rgba(255,255,255,0.08), transparent 45%)",
+          }}
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.07) 0.7px, transparent 0.7px)",
+            backgroundSize: "24px 24px",
+            maskImage:
+              "radial-gradient(ellipse 115% 80% at 50% 18%, #000 30%, transparent 85%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 115% 80% at 50% 18%, #000 30%, transparent 85%)",
+          }}
+        />
+      </div>
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-[1] opacity-[0.02] mix-blend-overlay"
         style={{ backgroundImage: GRAIN }}
       />
-      <main className="relative z-[2] bg-bg text-ink">
+      <main className="relative z-[2] text-ink">
         {/* ───── HERO ───── */}
-        <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
-          {/* 背景：点阵网格(向四周渐隐) + 绿色中心辉光 = 空间分层 */}
-          <div aria-hidden className="absolute inset-0">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle, rgba(255,255,255,0.07) 0.6px, transparent 0.6px)",
-                backgroundSize: "26px 26px",
-                maskImage:
-                  "radial-gradient(ellipse 75% 70% at 50% 45%, #000 30%, transparent 78%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 75% 70% at 50% 45%, #000 30%, transparent 78%)",
-              }}
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "radial-gradient(ellipse 60% 55% at 50% 42%, rgba(47,174,111,0.14) 0%, rgba(47,174,111,0.04) 35%, transparent 68%)",
-              }}
-            />
-          </div>
+        <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
           <div className="relative z-10 mx-auto max-w-4xl">
             <Reveal>
               <p className="mb-10 text-base font-medium uppercase tracking-[0.6em] text-muted md:text-lg">
@@ -271,13 +271,7 @@ export default function Home() {
         </section>
 
         {/* ───── WHAT I BRING ───── */}
-        <section
-          className="border-y border-line bg-bg-soft"
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse 55% 45% at 82% 28%, rgba(47,174,111,0.07), transparent 70%)",
-          }}
-        >
+        <section className="border-y border-line bg-bg-soft">
           <div className="mx-auto max-w-5xl px-6 py-32">
             <Reveal>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
