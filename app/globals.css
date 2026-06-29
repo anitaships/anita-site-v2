@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* 纯黑纯白 · 高对比 */
+  --color-bg: #050505;
+  --color-bg-soft: #0c0c0c;
+  --color-ink: #ffffff;
+  --color-muted: #cfcfcf;
+  --color-faint: #808080;
+  --color-line: #262626;
+  /* 绿色只剩极少点缀 */
+  --color-lemon: #c6f04e;
+  --color-emerald: #2fae6f;
+
+  /* 一个 grotesk 字族打通大小字：粗体当大字，细体当小字（Hanken：矮宽大字怀） */
+  --font-sans: "Hanken Grotesk", "Noto Sans SC", system-ui, -apple-system,
+    sans-serif;
+  --font-script: "Caveat", cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "kern";
+}
+
+::selection {
+  background: var(--color-lemon);
+  color: #060606;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
