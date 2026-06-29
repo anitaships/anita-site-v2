@@ -86,26 +86,10 @@ export default function Home() {
       />
       <main className="relative z-[2] bg-bg text-ink">
         {/* ───── HERO ───── */}
-        <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
-          <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div
-              className="animate-drift1 absolute left-[16%] top-[20%] h-[30rem] w-[30rem] rounded-full blur-[130px]"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(47,174,111,0.18), transparent 65%)",
-              }}
-            />
-            <div
-              className="animate-drift2 absolute bottom-[14%] right-[12%] h-[26rem] w-[26rem] rounded-full blur-[130px]"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(47,174,111,0.11), transparent 65%)",
-              }}
-            />
-          </div>
-          <div className="animate-floaty relative z-10 mx-auto max-w-4xl">
+        <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+          <div className="relative z-10 mx-auto max-w-4xl">
             <Reveal>
-              <p className="mb-9 text-xs font-medium uppercase tracking-[0.45em] text-faint">
+              <p className="mb-10 text-base font-medium uppercase tracking-[0.6em] text-muted md:text-lg">
                 Anita Liu
               </p>
             </Reveal>

@@ -25,8 +25,8 @@ export default function CursorGlow() {
       cx += (tx - cx) * 0.12;
       cy += (ty - cy) * 0.12;
       if (ref.current) {
-        ref.current.style.transform = `translate3d(${cx - 350}px, ${
-          cy - 350
+        ref.current.style.transform = `translate3d(${cx - 240}px, ${
+          cy - 240
         }px, 0)`;
       }
       raf = requestAnimationFrame(loop);
@@ -43,10 +43,10 @@ export default function CursorGlow() {
     <div className="pointer-events-none fixed inset-0 z-[3] overflow-hidden mix-blend-screen">
       <div
         ref={ref}
-        className="absolute left-0 top-0 h-[700px] w-[700px] rounded-full"
+        className="absolute left-0 top-0 h-[480px] w-[480px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(47,174,111,0.13) 0%, rgba(47,174,111,0.05) 35%, transparent 60%)",
+            "radial-gradient(circle, rgba(86,235,146,0.22) 0%, rgba(86,235,146,0.07) 28%, transparent 55%)",
         }}
       />
     </div>
