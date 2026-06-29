@@ -1,6 +1,5 @@
 import Header from "./components/Header";
 import Reveal from "./components/Reveal";
-import CursorGlow from "./components/CursorGlow";
 
 const CAPABILITIES = [
   {
@@ -78,7 +77,6 @@ export default function Home() {
   return (
     <>
       <Header />
-      <CursorGlow />
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-[1] opacity-[0.02] mix-blend-overlay"
@@ -86,7 +84,29 @@ export default function Home() {
       />
       <main className="relative z-[2] bg-bg text-ink">
         {/* ───── HERO ───── */}
-        <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+        <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 text-center">
+          {/* 背景：点阵网格(向四周渐隐) + 绿色中心辉光 = 空间分层 */}
+          <div aria-hidden className="absolute inset-0">
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle, rgba(255,255,255,0.07) 0.6px, transparent 0.6px)",
+                backgroundSize: "26px 26px",
+                maskImage:
+                  "radial-gradient(ellipse 75% 70% at 50% 45%, #000 30%, transparent 78%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 75% 70% at 50% 45%, #000 30%, transparent 78%)",
+              }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 60% 55% at 50% 42%, rgba(47,174,111,0.14) 0%, rgba(47,174,111,0.04) 35%, transparent 68%)",
+              }}
+            />
+          </div>
           <div className="relative z-10 mx-auto max-w-4xl">
             <Reveal>
               <p className="mb-10 text-base font-medium uppercase tracking-[0.6em] text-muted md:text-lg">
