@@ -79,13 +79,15 @@ export default function Home() {
       <Header />
       {/* 空间背景：近黑 + 顶部白光 + 点阵 + 暗角（黑白光雾分层；绿色只做强调） */}
       <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#0a0a0c" }}>
+        {/* 辉光（亮部）：标题后面一团光，制造明暗梯度 */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 8%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.06) 35%, transparent 62%), radial-gradient(circle 40% at 85% 12%, rgba(255,255,255,0.07), transparent 50%)",
+              "radial-gradient(ellipse 72% 58% at 50% 34%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 40%, transparent 70%), radial-gradient(circle 35% at 85% 14%, rgba(255,255,255,0.05), transparent 55%)",
           }}
         />
+        {/* 点阵（质感）：带遮罩，光里清楚、四周淡出 */}
         <div
           className="absolute inset-0"
           style={{
@@ -93,9 +95,17 @@ export default function Home() {
               "radial-gradient(circle, rgba(255,255,255,0.1) 0.8px, transparent 0.8px)",
             backgroundSize: "23px 23px",
             maskImage:
-              "radial-gradient(ellipse 120% 85% at 50% 14%, #000 28%, transparent 82%)",
+              "radial-gradient(ellipse 110% 80% at 50% 32%, #000 24%, transparent 78%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 120% 85% at 50% 14%, #000 28%, transparent 82%)",
+              "radial-gradient(ellipse 110% 80% at 50% 32%, #000 24%, transparent 78%)",
+          }}
+        />
+        {/* 暗角（暗部）：四周压暗，把光逼到中间 = 空间感 */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 80% at 50% 38%, transparent 42%, #050505 100%)",
           }}
         />
       </div>
@@ -117,7 +127,7 @@ export default function Home() {
               <h1 className="text-6xl font-extrabold leading-[0.98] tracking-[-0.03em] md:text-8xl">
                 I build order
                 <br />
-                out of chaos.
+                <span className="hero-shimmer">out of chaos.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.18}>

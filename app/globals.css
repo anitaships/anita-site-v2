@@ -43,6 +43,38 @@ body {
   color: #060606;
 }
 
+/* Hero 流光标题：绿渐变 + 白色高光扫过（照 demo 的 .shimmer） */
+.hero-shimmer {
+  background:
+    linear-gradient(
+      110deg,
+      transparent 44%,
+      rgba(255, 255, 255, 0.75) 50%,
+      transparent 56%
+    ),
+    linear-gradient(135deg, #b6ff5b, #5bffb0);
+  background-size:
+    220% 100%,
+    100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: sweep 4.8s linear infinite;
+}
+@keyframes sweep {
+  0% {
+    background-position:
+      120% 0,
+      0 0;
+  }
+  100% {
+    background-position:
+      -120% 0,
+      0 0;
+  }
+}
+
 /* 玻璃前景层：半透明白 + 背景模糊 + 1px 微边（磨砂背后光雾，浮在空间上方） */
 .glass {
   background: rgba(255, 255, 255, 0.03);
