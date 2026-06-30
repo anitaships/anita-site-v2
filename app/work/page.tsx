@@ -119,45 +119,53 @@ export default function WorkPage() {
         {/* ───── 内容层：时代倒叙时间轴 ───── */}
         <div className="relative border-y border-white/[0.08] bg-white/[0.015] backdrop-blur-[3px]">
           <div className="mx-auto max-w-5xl px-6 py-20">
-            {ERAS.map((era) => (
-              <div key={era.period} className="mb-24 last:mb-0">
-                <Reveal>
-                  <div className="mb-10 flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                    <span className="inline-flex items-center gap-2.5">
-                      <span className="h-1 w-6 rounded-full bg-gradient-to-r from-lemon to-emerald" />
-                      <span className="text-xs font-bold uppercase tracking-[0.25em] text-ink">
-                        {era.tag}
-                      </span>
-                    </span>
-                    <span className="text-xs uppercase tracking-[0.2em] text-faint">
-                      {era.period}
-                    </span>
-                    <span className="text-sm font-light text-muted">
-                      {era.role}
-                    </span>
-                  </div>
-                </Reveal>
-                <div className="grid gap-4 md:grid-cols-2">
-                  {era.projects.map((p, i) => (
-                    <Reveal key={p.title} delay={i * 0.08} y={40}>
-                      <SpotlightCard className="glass group relative h-full overflow-hidden rounded-2xl p-7 hover:border-emerald/50 hover:shadow-[0_44px_90px_-28px_rgba(47,174,111,0.55)]">
-                        <div className="relative">
-                          <div className="hero-shimmer inline-block text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
-                            {p.metric}
+            <div className="relative">
+              {/* 竖向时间轴线：顶部祖母绿渐隐到底 */}
+              <div className="absolute bottom-6 left-2 top-2 w-px bg-gradient-to-b from-emerald/60 via-white/12 to-transparent" />
+              {ERAS.map((era) => (
+                <div
+                  key={era.period}
+                  className="relative mb-20 pl-10 last:mb-0 md:pl-16"
+                >
+                  {/* 时间轴节点 */}
+                  <span className="absolute left-2 top-2 h-3.5 w-3.5 -translate-x-1/2 rounded-full bg-emerald shadow-[0_0_16px_rgba(47,174,111,0.9)]" />
+                  <Reveal>
+                    <div className="mb-8">
+                      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                        <span className="text-sm font-bold uppercase tracking-[0.25em] text-ink">
+                          {era.tag}
+                        </span>
+                        <span className="text-xs uppercase tracking-[0.2em] text-faint">
+                          {era.period}
+                        </span>
+                      </div>
+                      <p className="mt-2 text-sm font-light text-muted">
+                        {era.role}
+                      </p>
+                    </div>
+                  </Reveal>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {era.projects.map((p, i) => (
+                      <Reveal key={p.title} delay={i * 0.08} y={40}>
+                        <SpotlightCard className="glass group relative h-full overflow-hidden rounded-2xl p-7 hover:border-emerald/50 hover:shadow-[0_44px_90px_-28px_rgba(47,174,111,0.55)]">
+                          <div className="relative">
+                            <div className="hero-shimmer inline-block text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
+                              {p.metric}
+                            </div>
+                            <h3 className="mt-3 text-xl font-bold tracking-[-0.01em] text-ink">
+                              {p.title}
+                            </h3>
+                            <p className="mt-3 text-sm font-light leading-relaxed text-muted">
+                              {p.body}
+                            </p>
                           </div>
-                          <h3 className="mt-3 text-xl font-bold tracking-[-0.01em]">
-                            {p.title}
-                          </h3>
-                          <p className="mt-3 text-sm font-light leading-relaxed text-muted">
-                            {p.body}
-                          </p>
-                        </div>
-                      </SpotlightCard>
-                    </Reveal>
-                  ))}
+                        </SpotlightCard>
+                      </Reveal>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
