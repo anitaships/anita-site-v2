@@ -68,27 +68,44 @@ export default function AskBox() {
   return (
     <div className="mx-auto w-full max-w-xl text-left">
       {messages.length > 0 && (
-        <div
-          ref={scrollRef}
-          className="glass mb-3 max-h-72 space-y-3 overflow-y-auto rounded-3xl p-5"
-        >
-          {messages.map((m, i) => (
-            <div
-              key={i}
-              className={m.role === "user" ? "flex justify-end" : "flex"}
+        <div className="glass mb-3 rounded-3xl p-4">
+          <div className="mb-1 flex items-center justify-between px-1">
+            <span className="text-[11px] uppercase tracking-[0.2em] text-faint">
+              Ask my work
+            </span>
+            <button
+              onClick={() => {
+                setMessages([]);
+                setLoading(false);
+              }}
+              className="rounded-full px-2 py-1 text-xs text-faint transition-colors hover:text-ink"
+              aria-label="Clear conversation"
             >
-              <span
-                className={`inline-block max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                  m.role === "user"
-                    ? "bg-ink font-medium text-bg"
-                    : "text-muted"
-                }`}
+              Clear ✕
+            </button>
+          </div>
+          <div
+            ref={scrollRef}
+            className="max-h-72 space-y-3 overflow-y-auto px-1 py-1"
+          >
+            {messages.map((m, i) => (
+              <div
+                key={i}
+                className={m.role === "user" ? "flex justify-end" : "flex"}
               >
-                {m.content ||
-                  (loading && i === messages.length - 1 ? "…" : "")}
-              </span>
-            </div>
-          ))}
+                <span
+                  className={`inline-block max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                    m.role === "user"
+                      ? "bg-ink font-medium text-bg"
+                      : "text-muted"
+                  }`}
+                >
+                  {m.content ||
+                    (loading && i === messages.length - 1 ? "…" : "")}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
@@ -120,19 +137,18 @@ export default function AskBox() {
         </button>
       </form>
 
-      {messages.length === 0 && (
-        <div className="mt-3 flex flex-wrap justify-center gap-2">
-          {SUGGESTIONS.map((s) => (
-            <button
-              key={s}
-              onClick={() => send(s)}
-              className="rounded-full border border-line px-3 py-1.5 text-xs text-muted transition-colors hover:border-ink hover:text-ink"
-            >
-              {s}
-            </button>
-          ))}
-        </div>
-      )}
+      <div className="mt-3 flex flex-wrap justify-center gap-2">
+        {SUGGESTIONS.map((s) => (
+          <button
+            key={s}
+            onClick={() => send(s)}
+            disabled={loading}
+            className="rounded-full border border-line px-3 py-1.5 text-xs text-muted transition-colors hover:border-ink hover:text-ink disabled:opacity-40"
+          >
+            {s}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
