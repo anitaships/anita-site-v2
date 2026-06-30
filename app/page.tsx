@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Reveal from "./components/Reveal";
+import AskBox from "./components/AskBox";
 
 const CAPABILITIES = [
   {
@@ -79,12 +80,13 @@ export default function Home() {
       <Header />
       {/* 空间背景：近黑 + 顶部白光 + 点阵 + 暗角（黑白光雾分层；绿色只做强调） */}
       <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#0a0a0c" }}>
-        {/* 辉光（亮部）：标题后面一团光，制造明暗梯度 */}
+        {/* 辉光（亮部）：体积光 = 软光晕 + 集中亮核 + blur 吹散。←想更白调大下面 0.55 那个亮核 */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 72% 58% at 50% 34%, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.05) 40%, transparent 70%), radial-gradient(circle 35% at 85% 14%, rgba(255,255,255,0.05), transparent 55%)",
+              "radial-gradient(ellipse 70% 55% at 50% 30%, rgba(255,255,255,0.22) 0%, transparent 62%), radial-gradient(ellipse 34% 26% at 50% 27%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 45%, transparent 75%)",
+            filter: "blur(36px)",
           }}
         />
         {/* 点阵（质感）：带遮罩，光里清楚、四周淡出 */}
@@ -100,12 +102,12 @@ export default function Home() {
               "radial-gradient(ellipse 110% 80% at 50% 32%, #000 24%, transparent 78%)",
           }}
         />
-        {/* 暗角（暗部）：四周压暗，把光逼到中间 = 空间感 */}
+        {/* 暗角（暗部）：四周压到接近纯黑，拉大对比 = 3D 纵深 */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 80% at 50% 38%, transparent 42%, #050505 100%)",
+              "radial-gradient(ellipse 70% 70% at 50% 33%, transparent 22%, rgba(2,2,3,0.96) 100%)",
           }}
         />
       </div>
@@ -158,6 +160,11 @@ export default function Home() {
                 >
                   Work with me
                 </a>
+              </div>
+            </Reveal>
+            <Reveal delay={0.4}>
+              <div className="mt-10">
+                <AskBox />
               </div>
             </Reveal>
           </div>
