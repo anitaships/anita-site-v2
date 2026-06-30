@@ -5,10 +5,9 @@ import CursorGlow from "./components/CursorGlow";
 import CountUp from "./components/CountUp";
 
 const RESOURCES = [
-  { num: "5,000+", label: "Overseas KOL network" },
-  { num: "40+", label: "Cross-border partners" },
+  { num: "5,000+", label: "Creator network" },
+  { num: "40+", label: "Partner relationships" },
   { num: "43", label: "Self-built AI tools" },
-  { num: "0 → 335", label: "Community, from zero" },
 ];
 
 const CHANNELS = [
@@ -208,6 +207,26 @@ export default function Home() {
               ))}
             </div>
 
+            {/* 我带来什么 · 自带资产（与上面的"结果"区分） */}
+            <p className="mb-6 mt-16 text-sm font-light text-muted">
+              <span className="font-normal text-ink">
+                And the network comes with me
+              </span>{" "}
+              — assets you get on day one.
+            </p>
+            <div className="grid grid-cols-3 gap-y-6">
+              {RESOURCES.map((r, i) => (
+                <Reveal key={r.label} delay={i * 0.08} className="text-center">
+                  <div className="accent-breathe whitespace-nowrap text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
+                    {r.num}
+                  </div>
+                  <div className="mt-2 text-xs font-light tracking-wide text-muted md:text-sm">
+                    {r.label}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
             {/* 分析 → 产品 的闭环 */}
             <p className="mb-5 mt-16 text-sm font-light text-muted">
               <span className="font-normal text-ink">
@@ -243,32 +262,6 @@ export default function Home() {
                   </p>
                 </div>
               </Reveal>
-            </div>
-          </div>
-        </section>
-
-        {/* ───── WHAT I BRING ───── */}
-        <section className="border-y border-line">
-          <div className="mx-auto max-w-5xl px-6 py-24">
-            <Reveal>
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
-                What I bring
-              </p>
-              <h2 className="mb-14 text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] md:text-5xl">
-                I don&apos;t show up alone. A network shows up with me.
-              </h2>
-            </Reveal>
-            <div className="grid grid-cols-2 gap-y-12 md:grid-cols-4">
-              {RESOURCES.map((r, i) => (
-                <Reveal key={r.label} delay={i * 0.08} className="text-center">
-                  <div className="accent-breathe whitespace-nowrap text-4xl font-extrabold tracking-[-0.02em] md:text-5xl">
-                    {r.num}
-                  </div>
-                  <div className="mt-3 text-xs font-light tracking-wide text-muted md:text-sm">
-                    {r.label}
-                  </div>
-                </Reveal>
-              ))}
             </div>
           </div>
         </section>
