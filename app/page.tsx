@@ -270,7 +270,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.12}>
-              <div className="overflow-hidden rounded-2xl border border-line bg-[#0a0a0a] shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)]">
+              <div className="beam-card overflow-hidden rounded-2xl border border-line bg-[#0a0a0a] shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)]">
                 <div className="flex items-center gap-2 border-b border-line px-4 py-3">
                   <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
                   <span className="h-3 w-3 rounded-full bg-[#febc2e]" />

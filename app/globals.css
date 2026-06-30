@@ -60,14 +60,7 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  filter: drop-shadow(0 0 18px rgba(52, 184, 115, 0.35));
   animation: sweep 4.8s linear infinite;
-}
-
-/* 大标题：柔白微光，给暗底上的白字"打光"，制造层次（只给大字，不给正文） */
-h1,
-h2 {
-  text-shadow: 0 0 34px rgba(255, 255, 255, 0.12);
 }
 @keyframes sweep {
   0% {
