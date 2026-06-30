@@ -4,6 +4,7 @@ import AskBox from "./components/AskBox";
 import CursorGlow from "./components/CursorGlow";
 import CountUp from "./components/CountUp";
 import SpotlightCard from "./components/SpotlightCard";
+import MyProjects from "./components/MyProjects";
 
 const RESOURCES = [
   { value: 5000, suffix: "+", label: "Creator network" },
@@ -153,61 +154,8 @@ export default function Home() {
 
         {/* ───── 内容层：磨砂表面 + 上下边界，明显浮在点阵背景之上 ───── */}
         <div className="relative border-y border-[var(--surface-line)] bg-[var(--surface)] backdrop-blur-[3px]">
-        {/* ───── PROOF / RESULTS ───── */}
-        <section id="proof" className="border-b border-line">
-          <div className="mx-auto max-w-5xl px-6 py-24">
-            <Reveal>
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
-                Proof
-              </p>
-              <h2 className="mb-6 text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
-                Real channels. Real numbers.
-              </h2>
-              <p className="mb-14 max-w-2xl text-base font-light leading-relaxed text-muted">
-                I run the full funnel —{" "}
-                <span className="font-normal text-ink">
-                  acquire → convert → retain
-                </span>{" "}
-                — then loop product feedback back in. Here&apos;s where it
-                actually moved.
-              </p>
-            </Reveal>
-            {/* 我做成了什么 · 卡片 */}
-            <p className="mb-5 text-xs font-medium uppercase tracking-[0.2em] text-faint">
-              Growth, by channel
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {CHANNELS.map((c, i) => (
-                <Reveal key={c.ch} delay={i * 0.13} y={52} scale={0.92}>
-                  <SpotlightCard className="glass group relative h-full overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-emerald/40 hover:shadow-[0_24px_60px_-24px_rgba(47,174,111,0.4)] active:scale-[0.98]">
-                    <div className="relative">
-                      <div className="flex items-center gap-2.5">
-                        <span className="h-1 w-6 rounded-full bg-gradient-to-r from-lemon to-emerald" />
-                        <p className="text-xs uppercase tracking-[0.2em] text-faint">
-                          {c.ch}
-                        </p>
-                      </div>
-                      <div className="mt-4 whitespace-nowrap text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
-                        <CountUp
-                          value={c.num}
-                          prefix={c.pre}
-                          suffix={c.suf}
-                          duration={1.6}
-                        />
-                      </div>
-                      <p className="mt-1 text-[11px] font-light uppercase tracking-[0.15em] text-faint">
-                        {c.unit}
-                      </p>
-                      <p className="mt-4 text-sm font-light leading-relaxed text-muted">
-                        {c.note}
-                      </p>
-                    </div>
-                  </SpotlightCard>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* ───── MY PROJECTS（替换原 Proof 位置 · 产品突出）───── */}
+        <MyProjects />
 
         {/* ───── WHAT I BRING (自带资源 · 滚动数字) ───── */}
         <section className="mx-auto max-w-5xl px-6 pb-6 pt-24">

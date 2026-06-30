@@ -209,20 +209,24 @@ body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1px;
+  padding: 1.5px;
+  /* 更长更亮的光带 + 白热尖端（固定亮绿，不跟主题变暗）*/
   background: conic-gradient(
     from var(--beam-angle),
-    transparent 0 68%,
-    var(--color-emerald) 80%,
-    var(--color-lemon) 88%,
-    transparent 96%
+    transparent 0 54%,
+    rgba(47, 174, 111, 0.5) 66%,
+    #2fae6f 76%,
+    #c6f04e 84%,
+    #ffffff 88%,
+    transparent 95%
   );
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  animation: beam-spin 5s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(120, 230, 110, 0.55));
+  animation: beam-spin 4s linear infinite;
   pointer-events: none;
 }
 @keyframes beam-spin {
@@ -259,7 +263,24 @@ body {
   --vignette: #d9d9e2;
   --surface: rgba(0, 0, 0, 0.022);
   --surface-line: rgba(0, 0, 0, 0.08);
-  --terminal-bg: #f3f3f5;
+  --terminal-bg: #0a0a0a; /* 终端两个模式都保持深色，绿色流光才跳得出来 */
+}
+
+/* 白天模式下，深色终端里的文字固定为浅色（不跟主题翻黑，否则黑底黑字看不见） */
+[data-theme="light"] .beam-card {
+  border-color: #2a2a2a;
+}
+[data-theme="light"] .beam-card .text-muted {
+  color: #cfcfcf;
+}
+[data-theme="light"] .beam-card .text-faint {
+  color: #7a7a7a;
+}
+[data-theme="light"] .beam-card .text-ink {
+  color: #ffffff;
+}
+[data-theme="light"] .beam-card .border-line {
+  border-color: #262626;
 }
 
 /* 主题切换过渡 */
