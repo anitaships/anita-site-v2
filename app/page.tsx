@@ -215,7 +215,7 @@ export default function Home() {
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
               What I bring
             </p>
-            <h2 className="mb-16 text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] md:text-6xl">
+            <h2 className="mb-8 text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] md:text-5xl">
               I don&apos;t show up alone.
             </h2>
           </Reveal>

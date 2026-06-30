@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
+import CosmicBackground from "./components/CosmicBackground";
 
 export const metadata: Metadata = {
   title: "Anita Liu — Growth & Product",
@@ -33,6 +34,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <CosmicBackground />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
