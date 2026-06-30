@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import CosmicBackground from "./components/CosmicBackground";
+import { LangProvider } from "./lib/i18n";
 
 export const metadata: Metadata = {
   title: "Anita Liu — Growth & Product",
@@ -19,7 +20,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(l==='zh'){document.documentElement.lang='zh-CN';}}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`,
           }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,8 +35,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <CosmicBackground />
-        <SmoothScroll>{children}</SmoothScroll>
+        <LangProvider>
+          <CosmicBackground />
+          <SmoothScroll>{children}</SmoothScroll>
+        </LangProvider>
       </body>
     </html>
   );

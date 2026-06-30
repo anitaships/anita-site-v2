@@ -1,16 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useLang } from "../lib/i18n";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-const SUGGESTIONS = [
-  "What does Anita do?",
-  "Her strongest project?",
-  "Good fit for growth ops?",
-];
-
 export default function AskBox() {
+  const { t } = useLang();
+  const SUGGESTIONS = t.ask.suggestions;
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -50,8 +47,7 @@ export default function AskBox() {
         const copy = [...m];
         copy[copy.length - 1] = {
           role: "assistant",
-          content:
-            "Sorry, something went wrong. You can reach Anita directly at anitaliu0818@gmail.com.",
+          content: t.ask.error,
         };
         return copy;
       });
@@ -97,7 +93,7 @@ export default function AskBox() {
       {/* 细标签行：流光 Ask my work + 折叠/清空 */}
       <div className="mb-2 flex items-center justify-center gap-3 px-1">
         <span className="hero-shimmer text-[11px] font-bold uppercase tracking-[0.28em]">
-          Ask my work
+          {t.ask.label}
         </span>
         {hasChat && (
           <div className="flex items-center gap-2">
@@ -136,7 +132,7 @@ export default function AskBox() {
               className="text-[11px] text-faint transition-colors hover:text-ink"
               aria-label="Clear"
             >
-              Clear ✕
+              {t.ask.clear}
             </button>
           </div>
         )}
@@ -153,7 +149,7 @@ export default function AskBox() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask me anything about Anita…"
+          placeholder={t.ask.placeholder}
           className="flex-1 bg-transparent text-sm text-ink placeholder:text-faint focus:outline-none"
           aria-label="Ask about Anita"
         />

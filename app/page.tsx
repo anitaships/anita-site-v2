@@ -1,10 +1,12 @@
+"use client";
+
 import Header from "./components/Header";
 import Reveal from "./components/Reveal";
 import AskBox from "./components/AskBox";
 import CursorGlow from "./components/CursorGlow";
 import CountUp from "./components/CountUp";
-import SpotlightCard from "./components/SpotlightCard";
 import MyProjects from "./components/MyProjects";
+import { useLang } from "./lib/i18n";
 
 const RESOURCES = [
   { value: 5000, suffix: "+", label: "Creator network" },
@@ -51,6 +53,7 @@ const GRAIN =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
 
 export default function Home() {
+  const { t } = useLang();
   return (
     <>
       <Header />
@@ -101,25 +104,24 @@ export default function Home() {
           <div className="relative z-10 mx-auto max-w-4xl">
             <Reveal>
               <p className="mb-10 text-base font-medium uppercase tracking-[0.6em] text-muted md:text-lg">
-                Anita Liu
+                {t.hero.name}
               </p>
             </Reveal>
             <Reveal delay={0.08}>
               <h1 className="text-6xl font-extrabold leading-[0.98] tracking-[-0.03em] md:text-8xl">
-                I build order
+                {t.hero.line1}
                 <br />
-                <span className="hero-shimmer">out of chaos.</span>
+                <span className="hero-shimmer">{t.hero.line2}</span>
               </h1>
             </Reveal>
             <Reveal delay={0.18}>
               <p className="mx-auto mt-9 max-w-2xl text-xl font-normal text-ink md:text-2xl">
-                Cross-border user growth × product operations.
+                {t.hero.sub}
               </p>
             </Reveal>
             <Reveal delay={0.24}>
               <p className="mx-auto mt-4 max-w-2xl text-sm font-light tracking-wide text-faint">
-                A liberal-arts major who writes her own AI tools — bilingual,
-                AI-native.
+                {t.hero.tagline}
               </p>
             </Reveal>
             <Reveal delay={0.32}>
@@ -128,7 +130,7 @@ export default function Home() {
                   href="/work"
                   className="group inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3 text-sm font-bold text-bg transition-transform duration-300 hover:-translate-y-0.5"
                 >
-                  See my work
+                  {t.hero.cta1}
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
@@ -137,7 +139,7 @@ export default function Home() {
                   href="/services"
                   className="rounded-full border border-line px-7 py-3 text-sm font-medium text-ink transition-colors duration-300 hover:border-ink"
                 >
-                  Work with me
+                  {t.hero.cta2}
                 </a>
               </div>
             </Reveal>
@@ -161,10 +163,10 @@ export default function Home() {
         <section className="mx-auto max-w-5xl px-6 pb-6 pt-24">
           <Reveal>
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
-              What I bring
+              {t.bring.eyebrow}
             </p>
             <h2 className="mb-8 text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] md:text-5xl">
-              I don&apos;t show up alone.
+              {t.bring.h2}
             </h2>
           </Reveal>
           <div className="glass grid grid-cols-3 divide-x divide-[var(--surface-line)] rounded-3xl py-12">
@@ -177,7 +179,7 @@ export default function Home() {
                   className="hero-shimmer block whitespace-nowrap text-4xl font-extrabold tracking-[-0.02em] md:text-5xl"
                 />
                 <div className="mt-2 text-xs font-light tracking-wide text-muted md:text-sm">
-                  {r.label}
+                  {t.bring.resources[i]}
                 </div>
               </Reveal>
             ))}
@@ -190,16 +192,15 @@ export default function Home() {
             <Reveal>
               <div>
                 <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
-                  AI-native
+                  {t.ai.eyebrow}
                 </p>
                 <h2 className="text-4xl font-extrabold leading-[1.05] tracking-[-0.03em] md:text-5xl">
-                  I don&apos;t just use AI.
-                  <br />I build with it.
+                  {t.ai.h2a}
+                  <br />
+                  {t.ai.h2b}
                 </h2>
                 <p className="mt-6 text-lg font-light leading-relaxed text-muted">
-                  43 internal tools, a KOL CRM in Python, automations that run
-                  themselves — one person operating like a whole org. It&apos;s
-                  open-source on my GitHub.
+                  {t.ai.body}
                 </p>
                 <a
                   href="https://github.com/anitaships"
@@ -210,7 +211,7 @@ export default function Home() {
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12.01 12.01 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z" />
                   </svg>
-                  View my GitHub
+                  {t.ai.cta}
                   <span className="transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>
@@ -258,13 +259,13 @@ export default function Home() {
             <Reveal>
               <div className="mb-16 text-center">
                 <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
-                  About me
+                  {t.about.eyebrow}
                 </p>
                 <h2 className="text-4xl font-extrabold tracking-[-0.03em] md:text-6xl">
-                  Who is Anita?
+                  {t.about.h2}
                 </h2>
                 <p className="mt-4 text-lg font-light text-muted">
-                  A liberal-arts mind that ships.
+                  {t.about.sub}
                 </p>
               </div>
             </Reveal>
@@ -319,29 +320,12 @@ export default function Home() {
               <Reveal delay={0.12}>
                 <div>
                   <h3 className="text-3xl font-extrabold tracking-[-0.02em]">
-                    Hey, I&apos;m Anita.
+                    {t.about.h3}
                   </h3>
                   <div className="mt-6 space-y-5 text-lg font-light leading-relaxed text-muted">
-                    <p>
-                      I drive cross-border growth — full-funnel: finding the
-                      channels, running conversion, keeping users around. I&apos;m
-                      at my best in markets with no proven playbook: I get growth
-                      working from zero, then turn it into a system that repeats.
-                      I don&apos;t hand over a strategy deck — I ship the result.
-                    </p>
-                    <p>
-                      The results are concrete: a cold channel taken from{" "}
-                      <span className="text-ink">$1.5K to $30K (~20×)</span>, a
-                      community built from <span className="text-ink">0 to 335</span>{" "}
-                      that runs itself, email open rates at{" "}
-                      <span className="text-ink">2× the industry</span>. When it
-                      helps, I&apos;ll write my own tools to move faster — but
-                      growth is what I deliver.
-                    </p>
-                    <p className="font-normal text-ink">
-                      Need to take something from zero to its first real paying
-                      users? Let&apos;s talk.
-                    </p>
+                    <p>{t.about.p1}</p>
+                    <p>{t.about.p2}</p>
+                    <p className="font-normal text-ink">{t.about.p3}</p>
                   </div>
                 </div>
               </Reveal>
@@ -353,17 +337,17 @@ export default function Home() {
         <section className="mx-auto max-w-3xl px-6 pb-36 pt-32 text-center">
           <Reveal>
             <h2 className="text-5xl font-extrabold tracking-[-0.03em] md:text-7xl">
-              Let&apos;s build something.
+              {t.cta.h2}
             </h2>
             <p className="mx-auto mt-7 max-w-md text-lg font-light text-muted">
-              Hire me, partner up, or just say hi — it starts here.
+              {t.cta.sub}
             </p>
             <div className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
                 href="mailto:anitaliu0818@gmail.com"
                 className="rounded-full bg-ink px-7 py-3 text-sm font-bold text-bg transition-transform duration-300 hover:-translate-y-0.5"
               >
-                Email me
+                {t.cta.email}
               </a>
               <a
                 href="https://www.linkedin.com/in/anita-liu-9a6417362"
@@ -386,26 +370,26 @@ export default function Home() {
                   Anita阿清<span className="text-lemon">.</span>
                 </p>
                 <p className="mt-4 text-sm font-light leading-relaxed text-muted">
-                  Liberal arts + AI. I turn chaos into things that ship.
+                  {t.footer.tagline}
                 </p>
               </div>
               <div className="flex flex-col gap-3 text-sm font-light text-muted">
                 <a className="hover:text-ink" href="/">
-                  Home
+                  {t.footer.home}
                 </a>
                 <a className="hover:text-ink" href="/work">
-                  Work
+                  {t.footer.work}
                 </a>
                 <a className="hover:text-ink" href="/services">
-                  Services
+                  {t.footer.services}
                 </a>
                 <a className="hover:text-ink" href="/about">
-                  About
+                  {t.footer.about}
                 </a>
               </div>
               <div className="flex flex-col gap-3 text-sm font-light text-muted">
                 <a className="hover:text-ink" href="mailto:anitaliu0818@gmail.com">
-                  Email
+                  {t.footer.email}
                 </a>
                 <a
                   className="hover:text-ink"

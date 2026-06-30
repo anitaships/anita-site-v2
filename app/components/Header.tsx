@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
-
-const NAV: [string, string][] = [
-  ["Work", "/work"],
-  ["Services", "/services"],
-  ["About", "/about"],
-];
+import LangToggle from "./LangToggle";
+import { useLang } from "../lib/i18n";
 
 export default function Header() {
+  const { t } = useLang();
+  const NAV: [string, string][] = [
+    [t.nav.work, "/work"],
+    [t.nav.services, "/services"],
+    [t.nav.about, "/about"],
+  ];
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -57,11 +59,12 @@ export default function Header() {
             </svg>
           </a>
           <ThemeToggle />
+          <LangToggle />
           <a
             href="mailto:anitaliu0818@gmail.com"
             className="rounded-full border border-line px-4 py-1.5 text-ink transition-colors hover:border-ink"
           >
-            Contact
+            {t.nav.contact}
           </a>
         </nav>
       </div>
