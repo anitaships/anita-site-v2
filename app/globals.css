@@ -75,6 +75,20 @@ body {
   }
 }
 
+/* Ask 折叠箭头：绿色加粗 + 辉光脉动（流光感、更明显） */
+.ask-chevron {
+  animation: chevpulse 2.4s ease-in-out infinite;
+}
+@keyframes chevpulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px rgba(150, 235, 110, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(150, 235, 110, 0.75));
+  }
+}
+
 /* 玻璃前景层：半透明白 + 背景模糊 + 1px 微边（磨砂背后光雾，浮在空间上方） */
 .glass {
   background: rgba(255, 255, 255, 0.03);

@@ -16,17 +16,21 @@ export default function CursorGlow() {
     let ty = window.innerHeight / 2;
     let cx = tx;
     let cy = ty;
+    const root = document.documentElement;
 
     const onMove = (e: MouseEvent) => {
       tx = e.clientX;
       ty = e.clientY;
     };
     const loop = () => {
-      cx += (tx - cx) * 0.12;
-      cy += (ty - cy) * 0.12;
+      cx += (tx - cx) * 0.14;
+      cy += (ty - cy) * 0.14;
+      // 写出平滑后的坐标，给背景点阵聚光用
+      root.style.setProperty("--mx", `${cx}px`);
+      root.style.setProperty("--my", `${cy}px`);
       if (ref.current) {
-        ref.current.style.transform = `translate3d(${cx - 240}px, ${
-          cy - 240
+        ref.current.style.transform = `translate3d(${cx - 220}px, ${
+          cy - 220
         }px, 0)`;
       }
       raf = requestAnimationFrame(loop);
@@ -39,14 +43,15 @@ export default function CursorGlow() {
     };
   }, []);
 
+  // 白光跟随鼠标，screen 混合 → 鼠标所到之处的白色区轻轻变亮
   return (
     <div className="pointer-events-none fixed inset-0 z-[3] overflow-hidden mix-blend-screen">
       <div
         ref={ref}
-        className="absolute left-0 top-0 h-[480px] w-[480px] rounded-full"
+        className="absolute left-0 top-0 h-[440px] w-[440px] rounded-full"
         style={{
           background:
-            "radial-gradient(circle, rgba(86,235,146,0.22) 0%, rgba(86,235,146,0.07) 28%, transparent 55%)",
+            "radial-gradient(circle, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.035) 32%, transparent 62%)",
         }}
       />
     </div>

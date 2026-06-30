@@ -75,7 +75,7 @@ export default function AskBox() {
       {hasChat && !collapsed && (
         <div
           ref={scrollRef}
-          className="glass mb-3 max-h-72 space-y-3 overflow-y-auto rounded-[1.75rem] p-5"
+          className="glass mb-3 max-h-60 space-y-3 overflow-y-auto rounded-3xl p-4"
         >
           {messages.map((m, i) => (
             <div
@@ -94,79 +94,84 @@ export default function AskBox() {
         </div>
       )}
 
-      {/* 输入容器：流光标签 + 控件 + 输入框 合一 */}
-      <div className="glass rounded-[1.75rem] p-3">
-        <div className="flex items-center justify-between px-2 pb-2">
-          <span className="hero-shimmer text-[11px] font-bold uppercase tracking-[0.25em]">
-            Ask my work
-          </span>
-          {hasChat && (
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => setCollapsed((c) => !c)}
-                className="flex h-6 w-6 items-center justify-center rounded-full text-faint transition-colors hover:text-ink"
-                aria-label={collapsed ? "Expand" : "Collapse"}
+      {/* 细标签行：流光 Ask my work + 折叠/清空 */}
+      <div className="mb-2 flex items-center justify-center gap-3 px-1">
+        <span className="hero-shimmer text-[11px] font-bold uppercase tracking-[0.28em]">
+          Ask my work
+        </span>
+        {hasChat && (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCollapsed((c) => !c)}
+              className="ask-chevron flex h-6 w-6 items-center justify-center rounded-full"
+              aria-label={collapsed ? "Expand" : "Collapse"}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                strokeWidth="3.4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-300 ${
+                  collapsed ? "rotate-180" : ""
+                }`}
               >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={`transition-transform duration-300 ${
-                    collapsed ? "rotate-180" : ""
-                  }`}
-                >
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              <button
-                onClick={() => {
-                  setMessages([]);
-                  setLoading(false);
-                  setCollapsed(false);
-                }}
-                className="text-[11px] text-faint transition-colors hover:text-ink"
-                aria-label="Clear"
-              >
-                Clear ✕
-              </button>
-            </div>
-          )}
-        </div>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            send(input);
-          }}
-          className="flex items-center gap-2 rounded-full bg-white/[0.03] py-2 pl-5 pr-2"
-        >
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask me anything about Anita…"
-            className="flex-1 bg-transparent text-sm text-ink placeholder:text-faint focus:outline-none"
-            aria-label="Ask about Anita"
-          />
-          <button
-            type="submit"
-            disabled={loading || !input.trim()}
-            aria-label="Send"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-bg transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:hover:scale-100"
-          >
-            {loading ? (
-              <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-bg/40 border-t-bg" />
-            ) : (
-              "→"
-            )}
-          </button>
-        </form>
+                <defs>
+                  <linearGradient id="chevg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#d8ff63" />
+                    <stop offset="100%" stopColor="#2fae6f" />
+                  </linearGradient>
+                </defs>
+                <path d="m6 9 6 6 6-6" stroke="url(#chevg)" />
+              </svg>
+            </button>
+            <button
+              onClick={() => {
+                setMessages([]);
+                setLoading(false);
+                setCollapsed(false);
+              }}
+              className="text-[11px] text-faint transition-colors hover:text-ink"
+              aria-label="Clear"
+            >
+              Clear ✕
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* 提示问题：悬停抬起 + 点击下压 微动效 */}
+      {/* pill 输入条 */}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          send(input);
+        }}
+        className="glass flex items-center gap-2 rounded-full py-1.5 pl-5 pr-1.5"
+      >
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ask me anything about Anita…"
+          className="flex-1 bg-transparent text-sm text-ink placeholder:text-faint focus:outline-none"
+          aria-label="Ask about Anita"
+        />
+        <button
+          type="submit"
+          disabled={loading || !input.trim()}
+          aria-label="Send"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink text-bg transition-all duration-200 hover:scale-105 disabled:opacity-40 disabled:hover:scale-100"
+        >
+          {loading ? (
+            <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-bg/40 border-t-bg" />
+          ) : (
+            "→"
+          )}
+        </button>
+      </form>
+
+      {/* 提示问题：悬停抬起 + 点击下压 */}
       <div className="mt-3 flex flex-wrap justify-center gap-2">
         {SUGGESTIONS.map((s) => (
           <button
