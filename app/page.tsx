@@ -92,12 +92,12 @@ export default function Home() {
             opacity: 0.5,
           }}
         />
-        {/* 大面积冷白光：覆盖上半屏，掺一丝蓝 → 大但不灰；再叠一个亮核给"中心" */}
+        {/* 顶部柔光：一束小而干净的白光从顶部淡入，克制、不铺成大面积光雾 */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 92% 78% at 50% 24%, rgba(216,224,248,0.13) 0%, rgba(216,224,248,0.05) 44%, transparent 80%), radial-gradient(ellipse 42% 32% at 50% 30%, rgba(232,238,252,0.10) 0%, transparent 66%)",
+              "radial-gradient(ellipse 56% 38% at 50% 2%, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.025) 36%, transparent 60%)",
           }}
         />
         {/* 暗角：很温柔，只压最外圈，不和大光打架 */}
