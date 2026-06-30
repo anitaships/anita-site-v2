@@ -1,6 +1,8 @@
 import Header from "./components/Header";
 import Reveal from "./components/Reveal";
 import AskBox from "./components/AskBox";
+import CursorGlow from "./components/CursorGlow";
+import FunnelViz from "./components/FunnelViz";
 
 const CAPABILITIES = [
   {
@@ -78,57 +80,50 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* 空间背景：pszostak 式「多层弱光」——每层都很轻，叠出弥散纵深（绿色只做强调） */}
-      <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#0a0a0c" }}>
-        {/* 环境光：从四角/顶部打的多个柔光，全部 ≤0.12，弥散不聚成光斑 */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 14% 2%, rgba(255,255,255,0.10), transparent 46%), radial-gradient(circle at 86% 6%, rgba(255,255,255,0.07), transparent 50%), radial-gradient(ellipse 64% 52% at 50% 26%, rgba(255,255,255,0.12), transparent 66%), radial-gradient(circle at 50% 118%, rgba(150,235,150,0.05), transparent 55%)",
-          }}
-        />
-        {/* 底层点阵：极淡铺满，给空间一个质感平面 */}
+      {/* 空间背景：冷调暗底 + 大面积冷白光（掺蓝抗灰）+ 点阵；"活"靠光标交互 */}
+      <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#0a0b10" }}>
+        {/* 底层点阵：极淡铺满 */}
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
             backgroundSize: "32px 32px",
             opacity: 0.5,
           }}
         />
-        {/* 强点阵：带遮罩，只在中央亮区清楚，跟着光走 */}
+        {/* 大面积冷白光：覆盖上半屏，掺一丝蓝 → 大但不灰；再叠一个亮核给"中心" */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 92% 78% at 50% 24%, rgba(216,224,248,0.13) 0%, rgba(216,224,248,0.05) 44%, transparent 80%), radial-gradient(ellipse 42% 32% at 50% 30%, rgba(232,238,252,0.10) 0%, transparent 66%)",
+          }}
+        />
+        {/* 暗角：很温柔，只压最外圈，不和大光打架 */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 100% 100% at 50% 28%, transparent 62%, #060709 100%)",
+            opacity: 0.85,
+          }}
+        />
+        {/* 光标聚光 · 点阵：鼠标附近的点变亮（跟随 --mx/--my） */}
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)",
+              "radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px)",
             backgroundSize: "32px 32px",
             maskImage:
-              "radial-gradient(ellipse 80% 60% at 50% 28%, #000 0%, transparent 70%)",
+              "radial-gradient(240px circle at var(--mx, -999px) var(--my, -999px), #000 0%, transparent 72%)",
             WebkitMaskImage:
-              "radial-gradient(ellipse 80% 60% at 50% 28%, #000 0%, transparent 70%)",
-          }}
-        />
-        {/* 暗角：温柔化到底色（不近黑），轻轻收边 */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 92% 88% at 50% 34%, transparent 46%, #0a0a0c 100%)",
-            opacity: 0.7,
-          }}
-        />
-        {/* 顶部染色：极淡的一道从上往下淡出，加气氛 */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, transparent 42%)",
+              "radial-gradient(240px circle at var(--mx, -999px) var(--my, -999px), #000 0%, transparent 72%)",
           }}
         />
       </div>
+      <CursorGlow />
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-[1] opacity-[0.02] mix-blend-overlay"
@@ -279,30 +274,7 @@ export default function Home() {
               Make the product keep them.
             </h2>
           </Reveal>
-          <div className="grid gap-6 md:grid-cols-2">
-            {CAPABILITIES.map((c, i) => (
-              <Reveal key={c.t} delay={i * 0.1}>
-                <div className="group glass h-full rounded-2xl p-9">
-                  <span className="text-sm font-light text-faint">{c.n}</span>
-                  <h3 className="mt-3 text-3xl font-bold tracking-[-0.01em]">
-                    {c.t}
-                  </h3>
-                  <p className="mt-2 text-sm font-light text-faint">{c.sub}</p>
-                  <p className="mt-6 text-lg font-light leading-relaxed text-muted">
-                    {c.body}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.1}>
-            <p className="mt-10 text-center text-sm font-light text-faint">
-              Two ends of one loop —{" "}
-              <span className="font-normal text-ink">
-                growth brings them in, product makes them stay.
-              </span>
-            </p>
-          </Reveal>
+          <FunnelViz />
         </section>
 
         {/* ───── WHAT I BRING ───── */}
