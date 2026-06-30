@@ -110,9 +110,8 @@ const COPY = {
   },
 } as const;
 
-// TODO(anita): 替换成真实联系方式
-const WECHAT_ID = "your-wechat-id";
-const CALENDLY_URL = "https://calendly.com/your-handle";
+const WECHAT_ID = "17818310194";
+const CALENDLY_URL = "https://calendly.com/anitaliu0818/30min";
 const EMAIL = "anitaliu0818@gmail.com";
 
 export default function GrowthServicePage() {
