@@ -6,30 +6,72 @@ import CountUp from "./components/CountUp";
 
 const RESOURCES = [
   {
-    pre: "Overseas ",
-    hi: "KOL network",
-    post: "",
+    icon: "network",
+    num: "5,000+",
+    t: "Overseas KOL network",
     d: "Thousands of creators, reachable directly.",
   },
   {
-    pre: "Cross-border ",
-    hi: "partnerships",
-    post: "",
+    icon: "globe",
+    num: "40+",
+    t: "Cross-border partnerships",
     d: "Agencies, channels, co-branded courses — all proven.",
   },
   {
-    pre: "Self-built ",
-    hi: "AI automation",
-    post: "",
+    icon: "ai",
+    num: "43",
+    t: "Self-built AI tools",
     d: "Machines handle the repetitive work; I make the calls.",
   },
   {
-    pre: "",
-    hi: "Social & community",
-    post: ", from zero",
+    icon: "community",
+    num: "0 → 335",
+    t: "Social & community",
     d: "Stood up from scratch, still running.",
   },
 ];
+
+function ResIcon({ name }: { name: string }) {
+  const common = {
+    width: 22,
+    height: 22,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.7,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  if (name === "network")
+    return (
+      <svg {...common}>
+        <circle cx="12" cy="5" r="2.4" />
+        <circle cx="5" cy="18" r="2.4" />
+        <circle cx="19" cy="18" r="2.4" />
+        <path d="M12 7.4 6.6 15.8M12 7.4l5.4 8.4M7.4 18h9.2" />
+      </svg>
+    );
+  if (name === "globe")
+    return (
+      <svg {...common}>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18" />
+      </svg>
+    );
+  if (name === "ai")
+    return (
+      <svg {...common}>
+        <rect x="4" y="4" width="16" height="16" rx="3" />
+        <path d="m8 9 3 3-3 3M13 15h3" />
+      </svg>
+    );
+  return (
+    <svg {...common}>
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.7L3 21l1.8-5.8A8.5 8.5 0 1 1 21 11.5Z" />
+      <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" />
+    </svg>
+  );
+}
 
 const CHANNELS = [
   {
@@ -281,14 +323,20 @@ export default function Home() {
             </Reveal>
             <div className="grid gap-5 md:grid-cols-2">
               {RESOURCES.map((r, i) => (
-                <Reveal key={r.hi} delay={i * 0.08}>
-                  <div className="glass h-full rounded-2xl p-9">
-                    <h3 className="text-2xl font-bold tracking-[-0.01em]">
-                      {r.pre}
-                      <span className="accent-breathe">{r.hi}</span>
-                      {r.post}
+                <Reveal key={r.t} delay={i * 0.08}>
+                  <div className="glass group h-full rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-emerald/30 hover:shadow-[0_20px_55px_-20px_rgba(47,174,111,0.3)]">
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line text-emerald transition-colors duration-300 group-hover:border-emerald/50">
+                        <ResIcon name={r.icon} />
+                      </span>
+                      <span className="accent-breathe text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
+                        {r.num}
+                      </span>
+                    </div>
+                    <h3 className="mt-5 text-xl font-bold tracking-[-0.01em]">
+                      {r.t}
                     </h3>
-                    <p className="mt-3 text-sm font-light text-muted">{r.d}</p>
+                    <p className="mt-2 text-sm font-light text-muted">{r.d}</p>
                   </div>
                 </Reveal>
               ))}
