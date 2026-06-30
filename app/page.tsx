@@ -78,36 +78,54 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* 空间背景：近黑 + 顶部白光 + 点阵 + 暗角（黑白光雾分层；绿色只做强调） */}
+      {/* 空间背景：pszostak 式「多层弱光」——每层都很轻，叠出弥散纵深（绿色只做强调） */}
       <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#0a0a0c" }}>
-        {/* 辉光（亮部）：体积光 = 软光晕 + 集中亮核 + blur 吹散。←想更白调大下面 0.55 那个亮核 */}
+        {/* 环境光：从四角/顶部打的多个柔光，全部 ≤0.12，弥散不聚成光斑 */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 55% at 50% 30%, rgba(255,255,255,0.22) 0%, transparent 62%), radial-gradient(ellipse 34% 26% at 50% 27%, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 45%, transparent 75%)",
-            filter: "blur(36px)",
+              "radial-gradient(circle at 14% 2%, rgba(255,255,255,0.10), transparent 46%), radial-gradient(circle at 86% 6%, rgba(255,255,255,0.07), transparent 50%), radial-gradient(ellipse 64% 52% at 50% 26%, rgba(255,255,255,0.12), transparent 66%), radial-gradient(circle at 50% 118%, rgba(150,235,150,0.05), transparent 55%)",
           }}
         />
-        {/* 点阵（质感）：带遮罩，光里清楚、四周淡出 */}
+        {/* 底层点阵：极淡铺满，给空间一个质感平面 */}
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.1) 0.8px, transparent 0.8px)",
-            backgroundSize: "23px 23px",
-            maskImage:
-              "radial-gradient(ellipse 110% 80% at 50% 32%, #000 24%, transparent 78%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 110% 80% at 50% 32%, #000 24%, transparent 78%)",
+              "radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+            opacity: 0.5,
           }}
         />
-        {/* 暗角（暗部）：四周压到接近纯黑，拉大对比 = 3D 纵深 */}
+        {/* 强点阵：带遮罩，只在中央亮区清楚，跟着光走 */}
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+            maskImage:
+              "radial-gradient(ellipse 80% 60% at 50% 28%, #000 0%, transparent 70%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 60% at 50% 28%, #000 0%, transparent 70%)",
+          }}
+        />
+        {/* 暗角：温柔化到底色（不近黑），轻轻收边 */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 70% at 50% 33%, transparent 22%, rgba(2,2,3,0.96) 100%)",
+              "radial-gradient(ellipse 92% 88% at 50% 34%, transparent 46%, #0a0a0c 100%)",
+            opacity: 0.7,
+          }}
+        />
+        {/* 顶部染色：极淡的一道从上往下淡出，加气氛 */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, transparent 42%)",
           }}
         />
       </div>

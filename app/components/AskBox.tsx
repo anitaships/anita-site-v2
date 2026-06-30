@@ -14,6 +14,7 @@ export default function AskBox() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   async function send(text: string) {
@@ -23,6 +24,7 @@ export default function AskBox() {
     setMessages([...next, { role: "assistant", content: "" }]);
     setInput("");
     setLoading(true);
+    setCollapsed(false);
     try {
       const res = await fetch("/api/ask", {
         method: "POST",
@@ -69,24 +71,48 @@ export default function AskBox() {
     <div className="mx-auto w-full max-w-xl text-left">
       {messages.length > 0 && (
         <div className="glass mb-3 rounded-3xl p-4">
-          <div className="mb-1 flex items-center justify-between px-1">
+          <div className="flex items-center justify-between px-1">
             <span className="text-[11px] uppercase tracking-[0.2em] text-faint">
               Ask my work
             </span>
-            <button
-              onClick={() => {
-                setMessages([]);
-                setLoading(false);
-              }}
-              className="rounded-full px-2 py-1 text-xs text-faint transition-colors hover:text-ink"
-              aria-label="Clear conversation"
-            >
-              Clear ✕
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => setCollapsed((c) => !c)}
+                className="flex h-7 w-7 items-center justify-center rounded-full text-faint transition-colors hover:text-ink"
+                aria-label={collapsed ? "Expand conversation" : "Collapse conversation"}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`transition-transform duration-300 ${collapsed ? "rotate-180" : ""}`}
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <button
+                onClick={() => {
+                  setMessages([]);
+                  setLoading(false);
+                  setCollapsed(false);
+                }}
+                className="rounded-full px-2 py-1 text-xs text-faint transition-colors hover:text-ink"
+                aria-label="Clear conversation"
+              >
+                Clear ✕
+              </button>
+            </div>
           </div>
           <div
             ref={scrollRef}
-            className="max-h-72 space-y-3 overflow-y-auto px-1 py-1"
+            className={`space-y-3 overflow-y-auto px-1 transition-all duration-300 ${
+              collapsed ? "max-h-0 py-0 opacity-0" : "max-h-72 py-1 opacity-100"
+            }`}
           >
             {messages.map((m, i) => (
               <div
