@@ -219,9 +219,9 @@ export default function Home() {
               I don&apos;t show up alone.
             </h2>
           </Reveal>
-          <div className="grid grid-cols-3 gap-y-6">
+          <div className="glass grid grid-cols-3 divide-x divide-white/10 rounded-3xl py-12">
             {RESOURCES.map((r, i) => (
-              <Reveal key={r.label} delay={i * 0.08} className="text-center">
+              <Reveal key={r.label} delay={i * 0.08} className="px-4 text-center">
                 <CountUp
                   value={r.value}
                   suffix={r.suffix}
