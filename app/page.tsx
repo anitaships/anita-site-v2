@@ -54,23 +54,23 @@ export default function Home() {
     <>
       <Header />
       {/* 空间背景：冷调暗底 + 大面积冷白光（掺蓝抗灰）+ 点阵；"活"靠光标交互 */}
-      <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#040406" }}>
+      <div aria-hidden className="fixed inset-0 z-0" style={{ background: "var(--bg-base)" }}>
         {/* 底层点阵：极淡铺满 */}
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
+              "radial-gradient(circle, var(--dot) 1px, transparent 1px)",
             backgroundSize: "32px 32px",
             opacity: 0.5,
           }}
         />
-        {/* 暗角：纯黑压四周边，不加任何白光雾（保持高黑白对比） */}
+        {/* 暗角：压四周边（暗色=纯黑 / 白天=浅灰），衬出中心 */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 40%, transparent 60%, #000000 100%)",
+              "radial-gradient(ellipse 100% 100% at 50% 40%, transparent 60%, var(--vignette) 100%)",
             opacity: 0.95,
           }}
         />
@@ -79,7 +79,7 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             backgroundImage:
-              "radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px)",
+              "radial-gradient(circle, var(--dot-spot) 1px, transparent 1px)",
             backgroundSize: "32px 32px",
             maskImage:
               "radial-gradient(240px circle at var(--mx, -999px) var(--my, -999px), #000 0%, transparent 72%)",
@@ -152,7 +152,7 @@ export default function Home() {
         </section>
 
         {/* ───── 内容层：磨砂表面 + 上下边界，明显浮在点阵背景之上 ───── */}
-        <div className="relative border-y border-white/[0.08] bg-white/[0.015] backdrop-blur-[3px]">
+        <div className="relative border-y border-[var(--surface-line)] bg-[var(--surface)] backdrop-blur-[3px]">
         {/* ───── PROOF / RESULTS ───── */}
         <section id="proof" className="border-b border-line">
           <div className="mx-auto max-w-5xl px-6 py-24">
@@ -219,7 +219,7 @@ export default function Home() {
               I don&apos;t show up alone.
             </h2>
           </Reveal>
-          <div className="glass grid grid-cols-3 divide-x divide-white/10 rounded-3xl py-12">
+          <div className="glass grid grid-cols-3 divide-x divide-[var(--surface-line)] rounded-3xl py-12">
             {RESOURCES.map((r, i) => (
               <Reveal key={r.label} delay={i * 0.08} className="px-4 text-center">
                 <CountUp
@@ -270,7 +270,7 @@ export default function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.12}>
-              <div className="beam-card overflow-hidden rounded-2xl border border-line bg-[#0a0a0a] shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)]">
+              <div className="beam-card overflow-hidden rounded-2xl border border-line bg-[var(--terminal-bg)] shadow-[0_24px_70px_-30px_rgba(0,0,0,0.9)]">
                 <div className="flex items-center gap-2 border-b border-line px-4 py-3">
                   <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
                   <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
@@ -322,7 +322,7 @@ export default function Home() {
             </Reveal>
             <div className="grid items-center gap-12 md:grid-cols-[320px_1fr] md:gap-16">
               <Reveal className="flex flex-col items-center">
-                <div className="overflow-hidden rounded-full border border-white/15 p-1.5">
+                <div className="overflow-hidden rounded-full border border-[var(--surface-line)] p-1.5">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/anita.jpg"
