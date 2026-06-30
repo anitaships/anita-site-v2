@@ -226,7 +226,7 @@ export default function Home() {
                   value={r.value}
                   suffix={r.suffix}
                   duration={1.8}
-                  className="accent-breathe block whitespace-nowrap text-4xl font-extrabold tracking-[-0.02em] md:text-5xl"
+                  className="hero-shimmer block whitespace-nowrap text-4xl font-extrabold tracking-[-0.02em] md:text-5xl"
                 />
                 <div className="mt-2 text-xs font-light tracking-wide text-muted md:text-sm">
                   {r.label}
