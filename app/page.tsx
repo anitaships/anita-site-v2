@@ -150,8 +150,10 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ───── 内容层：磨砂表面 + 上下边界，明显浮在点阵背景之上 ───── */}
+        <div className="relative border-y border-white/[0.08] bg-white/[0.015] backdrop-blur-[3px]">
         {/* ───── PROOF / RESULTS ───── */}
-        <section id="proof" className="border-y border-line">
+        <section id="proof" className="border-b border-line">
           <div className="mx-auto max-w-5xl px-6 py-24">
             <Reveal>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
@@ -175,7 +177,7 @@ export default function Home() {
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {CHANNELS.map((c, i) => (
-                <Reveal key={c.ch} delay={i * 0.07}>
+                <Reveal key={c.ch} delay={i * 0.13} y={52} scale={0.92}>
                   <div className="glass h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-emerald/40 hover:shadow-[0_24px_60px_-24px_rgba(47,174,111,0.35)] active:scale-[0.98]">
                     <p className="text-xs uppercase tracking-[0.2em] text-faint">
                       {c.ch}
@@ -293,6 +295,8 @@ export default function Home() {
             </Reveal>
           </div>
         </section>
+        </div>
+        {/* ───── /内容层 ───── */}
 
         {/* ───── ABOUT ME (near bottom, Dan Koe style) ───── */}
         <section className="border-t border-line bg-bg-soft">
