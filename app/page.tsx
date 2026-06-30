@@ -2,22 +2,7 @@ import Header from "./components/Header";
 import Reveal from "./components/Reveal";
 import AskBox from "./components/AskBox";
 import CursorGlow from "./components/CursorGlow";
-import FunnelViz from "./components/FunnelViz";
-
-const CAPABILITIES = [
-  {
-    n: "01",
-    t: "Growth",
-    sub: "Acquire → Convert → Retain",
-    body: "Turn a cold channel into a positive-ROI business, from zero.",
-  },
-  {
-    n: "02",
-    t: "Product Ops",
-    sub: "Carry the user's voice back to the product",
-    body: "Turn real usage feedback into the product's next move.",
-  },
-];
+import CountUp from "./components/CountUp";
 
 const RESOURCES = [
   {
@@ -49,25 +34,33 @@ const RESOURCES = [
 const CHANNELS = [
   {
     ch: "Agencies",
-    big: "300+",
+    pre: "",
+    num: 300,
+    suf: "+",
     unit: "users",
     note: "$30K+ subscription from a $1.5K start — ~20× ROI.",
   },
   {
     ch: "KOLs",
-    big: "7M+",
+    pre: "",
+    num: 7,
+    suf: "M+",
     unit: "reach",
     note: "1,000+ visits from a single creator collab.",
   },
   {
     ch: "Community",
-    big: "0 → 335",
+    pre: "0 → ",
+    num: 335,
+    suf: "",
     unit: "members",
     note: "11 months · 4 automation SOPs. Runs itself.",
   },
   {
     ch: "Email",
-    big: "30–50%",
+    pre: "30–",
+    num: 50,
+    suf: "%",
     unit: "open rate",
     note: "2× industry, across the full user base.",
   },
@@ -193,14 +186,21 @@ export default function Home() {
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
                 Proof
               </p>
-              <h2 className="mb-14 text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
+              <h2 className="mb-6 text-4xl font-extrabold tracking-[-0.03em] md:text-5xl">
                 Real channels. Real numbers.
               </h2>
+              <p className="mb-14 max-w-2xl text-base font-light leading-relaxed text-muted">
+                I run the full funnel —{" "}
+                <span className="font-normal text-ink">
+                  acquire → convert → retain
+                </span>{" "}
+                — then loop product feedback back in. Here&apos;s where it
+                actually moved.
+              </p>
             </Reveal>
             {/* 增长 · 分渠道 */}
-            <p className="mb-5 text-sm font-light text-muted">
-              <span className="font-normal text-ink">Growth, by channel</span> —
-              I pull users in from everywhere, then keep them.
+            <p className="mb-5 text-xs font-medium uppercase tracking-[0.2em] text-faint">
+              Growth, by channel
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {CHANNELS.map((c, i) => (
@@ -210,7 +210,12 @@ export default function Home() {
                       {c.ch}
                     </p>
                     <div className="mt-4 whitespace-nowrap text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
-                      {c.big}
+                      <CountUp
+                        value={c.num}
+                        prefix={c.pre}
+                        suffix={c.suf}
+                        duration={1.6}
+                      />
                     </div>
                     <p className="mt-1 text-[11px] font-light uppercase tracking-[0.15em] text-faint">
                       {c.unit}
@@ -260,21 +265,6 @@ export default function Home() {
               </Reveal>
             </div>
           </div>
-        </section>
-
-        {/* ───── WHAT I DO ───── */}
-        <section className="mx-auto max-w-5xl px-6 py-32">
-          <Reveal>
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
-              What I do
-            </p>
-            <h2 className="mb-16 text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] md:text-6xl">
-              Bring people in.
-              <br />
-              Make the product keep them.
-            </h2>
-          </Reveal>
-          <FunnelViz />
         </section>
 
         {/* ───── WHAT I BRING ───── */}
