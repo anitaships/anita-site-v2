@@ -210,7 +210,7 @@ export default function Home() {
         </section>
 
         {/* ───── WHAT I BRING (自带资源 · 滚动数字) ───── */}
-        <section className="mx-auto max-w-5xl px-6 py-28">
+        <section className="mx-auto max-w-5xl px-6 pb-10 pt-24">
           <Reveal>
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
               What I bring
@@ -237,7 +237,7 @@ export default function Home() {
         </section>
 
         {/* ───── AI-NATIVE (work image: GitHub / 自建工具) ───── */}
-        <section className="mx-auto max-w-5xl px-6 py-32">
+        <section className="mx-auto max-w-5xl px-6 pb-32 pt-16">
           <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <Reveal>
               <div>
