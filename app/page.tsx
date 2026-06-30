@@ -177,27 +177,7 @@ export default function Home() {
                 actually moved.
               </p>
             </Reveal>
-            {/* 第一排 · 我带来什么 · 绿色滚动数字（自带资产） */}
-            <p className="mb-7 text-xs font-medium uppercase tracking-[0.2em] text-faint">
-              What I bring
-            </p>
-            <div className="mb-20 grid grid-cols-3 gap-y-6">
-              {RESOURCES.map((r, i) => (
-                <Reveal key={r.label} delay={i * 0.08} className="text-center">
-                  <CountUp
-                    value={r.value}
-                    suffix={r.suffix}
-                    duration={1.8}
-                    className="accent-breathe block whitespace-nowrap text-4xl font-extrabold tracking-[-0.02em] md:text-5xl"
-                  />
-                  <div className="mt-2 text-xs font-light tracking-wide text-muted md:text-sm">
-                    {r.label}
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            {/* 第二排 · 我做成了什么 · 卡片 */}
+            {/* 我做成了什么 · 卡片 */}
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.2em] text-faint">
               Growth, by channel
             </p>
@@ -226,6 +206,33 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ───── WHAT I BRING (自带资源 · 滚动数字) ───── */}
+        <section className="mx-auto max-w-5xl px-6 py-28">
+          <Reveal>
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
+              What I bring
+            </p>
+            <h2 className="mb-16 text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] md:text-5xl">
+              I don&apos;t show up alone. A network shows up with me.
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-3 gap-y-6">
+            {RESOURCES.map((r, i) => (
+              <Reveal key={r.label} delay={i * 0.08} className="text-center">
+                <CountUp
+                  value={r.value}
+                  suffix={r.suffix}
+                  duration={1.8}
+                  className="accent-breathe block whitespace-nowrap text-4xl font-extrabold tracking-[-0.02em] md:text-5xl"
+                />
+                <div className="mt-2 text-xs font-light tracking-wide text-muted md:text-sm">
+                  {r.label}
+                </div>
+              </Reveal>
+            ))}
           </div>
         </section>
 
