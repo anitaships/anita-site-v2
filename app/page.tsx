@@ -157,7 +157,7 @@ export default function Home() {
         </section>
 
         {/* ───── PROOF / RESULTS ───── */}
-        <section id="proof" className="border-y border-line bg-bg-soft">
+        <section id="proof" className="border-y border-line">
           <div className="mx-auto max-w-5xl px-6 py-24">
             <Reveal>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
@@ -172,10 +172,10 @@ export default function Home() {
               <span className="font-normal text-ink">Growth, by channel</span> —
               I pull users in from everywhere, then keep them.
             </p>
-            <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {CHANNELS.map((c, i) => (
                 <Reveal key={c.ch} delay={i * 0.07}>
-                  <div className="h-full bg-bg-soft p-6">
+                  <div className="glass h-full rounded-2xl p-6">
                     <p className="text-xs uppercase tracking-[0.2em] text-faint">
                       {c.ch}
                     </p>
@@ -202,7 +202,7 @@ export default function Home() {
             </p>
             <div className="grid gap-6 md:grid-cols-2">
               <Reveal>
-                <div className="h-full rounded-2xl border border-line bg-bg p-8">
+                <div className="glass h-full rounded-2xl p-8">
                   <p className="text-xs font-medium uppercase tracking-[0.25em] text-faint">
                     Analyze
                   </p>
@@ -214,7 +214,7 @@ export default function Home() {
                 </div>
               </Reveal>
               <Reveal delay={0.1}>
-                <div className="h-full rounded-2xl border border-line bg-bg p-8">
+                <div className="glass h-full rounded-2xl p-8">
                   <p className="text-xs font-medium uppercase tracking-[0.25em] text-faint">
                     Ship
                   </p>
@@ -247,7 +247,7 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-2">
             {CAPABILITIES.map((c, i) => (
               <Reveal key={c.t} delay={i * 0.1}>
-                <div className="group h-full rounded-2xl border border-line bg-white/[0.02] p-9 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.04]">
+                <div className="group glass h-full rounded-2xl p-9">
                   <span className="text-sm font-light text-faint">{c.n}</span>
                   <h3 className="mt-3 text-3xl font-bold tracking-[-0.01em]">
                     {c.t}
@@ -271,7 +271,7 @@ export default function Home() {
         </section>
 
         {/* ───── WHAT I BRING ───── */}
-        <section className="border-y border-line bg-bg-soft">
+        <section className="border-y border-line">
           <div className="mx-auto max-w-5xl px-6 py-32">
             <Reveal>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
@@ -282,10 +282,10 @@ export default function Home() {
                 <br />A network shows up with me.
               </h2>
             </Reveal>
-            <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
+            <div className="grid gap-5 md:grid-cols-2">
               {RESOURCES.map((r, i) => (
                 <Reveal key={r.hi} delay={i * 0.08}>
-                  <div className="h-full bg-bg-soft p-9 transition-colors duration-300 hover:bg-white/[0.03]">
+                  <div className="glass h-full rounded-2xl p-9">
                     <h3 className="text-2xl font-bold tracking-[-0.01em]">
                       {r.pre}
                       <span className="accent-breathe">{r.hi}</span>
