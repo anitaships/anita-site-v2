@@ -5,9 +5,9 @@ import CursorGlow from "./components/CursorGlow";
 import CountUp from "./components/CountUp";
 
 const RESOURCES = [
-  { num: "5,000+", label: "Creator network" },
-  { num: "40+", label: "Partner relationships" },
-  { num: "43", label: "Self-built AI tools" },
+  { value: 5000, suffix: "+", label: "Creator network" },
+  { value: 40, suffix: "+", label: "Partner relationships" },
+  { value: 43, suffix: "", label: "Self-built AI tools" },
 ];
 
 const CHANNELS = [
@@ -177,7 +177,27 @@ export default function Home() {
                 actually moved.
               </p>
             </Reveal>
-            {/* 增长 · 分渠道 */}
+            {/* 第一排 · 我带来什么 · 绿色滚动数字（自带资产） */}
+            <p className="mb-7 text-xs font-medium uppercase tracking-[0.2em] text-faint">
+              What I bring
+            </p>
+            <div className="mb-20 grid grid-cols-3 gap-y-6">
+              {RESOURCES.map((r, i) => (
+                <Reveal key={r.label} delay={i * 0.08} className="text-center">
+                  <CountUp
+                    value={r.value}
+                    suffix={r.suffix}
+                    duration={1.8}
+                    className="accent-breathe block whitespace-nowrap text-4xl font-extrabold tracking-[-0.02em] md:text-5xl"
+                  />
+                  <div className="mt-2 text-xs font-light tracking-wide text-muted md:text-sm">
+                    {r.label}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            {/* 第二排 · 我做成了什么 · 卡片 */}
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.2em] text-faint">
               Growth, by channel
             </p>
@@ -205,63 +225,6 @@ export default function Home() {
                   </div>
                 </Reveal>
               ))}
-            </div>
-
-            {/* 我带来什么 · 自带资产（与上面的"结果"区分） */}
-            <p className="mb-6 mt-16 text-sm font-light text-muted">
-              <span className="font-normal text-ink">
-                And the network comes with me
-              </span>{" "}
-              — assets you get on day one.
-            </p>
-            <div className="grid grid-cols-3 gap-y-6">
-              {RESOURCES.map((r, i) => (
-                <Reveal key={r.label} delay={i * 0.08} className="text-center">
-                  <div className="accent-breathe whitespace-nowrap text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
-                    {r.num}
-                  </div>
-                  <div className="mt-2 text-xs font-light tracking-wide text-muted md:text-sm">
-                    {r.label}
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            {/* 分析 → 产品 的闭环 */}
-            <p className="mb-5 mt-16 text-sm font-light text-muted">
-              <span className="font-normal text-ink">
-                Then I close the loop
-              </span>{" "}
-              — analyze the funnel, fix the product.
-            </p>
-            <div className="grid gap-6 md:grid-cols-2">
-              <Reveal>
-                <div className="glass h-full rounded-2xl p-8">
-                  <p className="text-xs font-medium uppercase tracking-[0.25em] text-faint">
-                    Analyze
-                  </p>
-                  <p className="mt-5 text-lg font-light leading-relaxed text-muted">
-                    Mapped the full funnel — anonymous → signup → first value →
-                    repeat → paywall → paid. Then emailed the paywall drop-offs to
-                    ask <span className="text-ink">why</span>.
-                  </p>
-                </div>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <div className="glass h-full rounded-2xl p-8">
-                  <p className="text-xs font-medium uppercase tracking-[0.25em] text-faint">
-                    Ship
-                  </p>
-                  <p className="mt-5 text-lg font-light leading-relaxed text-muted">
-                    Their answers became product —{" "}
-                    <span className="text-ink">
-                      fixed onboarding, re-added cut features
-                    </span>{" "}
-                    users needed — while driving upgrades, payments &amp; credit
-                    top-ups.
-                  </p>
-                </div>
-              </Reveal>
             </div>
           </div>
         </section>

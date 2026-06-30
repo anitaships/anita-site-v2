@@ -38,7 +38,7 @@ export default function CountUp({
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {Math.round(n)}
+      {Math.round(n).toLocaleString("en-US")}
       {suffix}
     </span>
   );
