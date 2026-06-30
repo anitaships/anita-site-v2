@@ -204,7 +204,7 @@ export default function Home() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {CHANNELS.map((c, i) => (
                 <Reveal key={c.ch} delay={i * 0.07}>
-                  <div className="glass h-full rounded-2xl p-6">
+                  <div className="glass h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-emerald/40 hover:shadow-[0_24px_60px_-24px_rgba(47,174,111,0.35)] active:scale-[0.98]">
                     <p className="text-xs uppercase tracking-[0.2em] text-faint">
                       {c.ch}
                     </p>
