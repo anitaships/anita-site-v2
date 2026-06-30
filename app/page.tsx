@@ -53,7 +53,7 @@ export default function Home() {
     <>
       <Header />
       {/* 空间背景：冷调暗底 + 大面积冷白光（掺蓝抗灰）+ 点阵；"活"靠光标交互 */}
-      <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#0a0b10" }}>
+      <div aria-hidden className="fixed inset-0 z-0" style={{ background: "#040406" }}>
         {/* 底层点阵：极淡铺满 */}
         <div
           className="absolute inset-0"
@@ -77,8 +77,8 @@ export default function Home() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 100% 100% at 50% 28%, transparent 62%, #060709 100%)",
-            opacity: 0.85,
+              "radial-gradient(ellipse 100% 100% at 50% 28%, transparent 58%, #000000 100%)",
+            opacity: 0.9,
           }}
         />
         {/* 光标聚光 · 点阵：鼠标附近的点变亮（跟随 --mx/--my） */}
@@ -373,21 +373,24 @@ export default function Home() {
                   </h3>
                   <div className="mt-6 space-y-5 text-lg font-light leading-relaxed text-muted">
                     <p>
-                      I run full-funnel user growth &amp; product operations at a
-                      cross-border AI e-commerce startup — finding the channels,
-                      running the funnel, and keeping users around.
+                      I drive cross-border growth — full-funnel: finding the
+                      channels, running conversion, keeping users around. I&apos;m
+                      at my best in markets with no proven playbook: I get growth
+                      working from zero, then turn it into a system that repeats.
+                      I don&apos;t hand over a strategy deck — I ship the result.
                     </p>
                     <p>
-                      A liberal-arts major who codes her own tools: 43 internal
-                      AI tools, a KOL CRM I built in Python, and the{" "}
-                      <span className="text-ink">#2 git contributor</span> on the
-                      team. I turn messy, no-playbook situations into systems
-                      that ship.
+                      The results are concrete: a cold channel taken from{" "}
+                      <span className="text-ink">$1.5K to $30K (~20×)</span>, a
+                      community built from <span className="text-ink">0 to 335</span>{" "}
+                      that runs itself, email open rates at{" "}
+                      <span className="text-ink">2× the industry</span>. When it
+                      helps, I&apos;ll write my own tools to move faster — but
+                      growth is what I deliver.
                     </p>
                     <p className="font-normal text-ink">
-                      Off the clock, I sing, dance, write, and draw. I&apos;m the
-                      person you bring in when there&apos;s no process yet — and
-                      I&apos;ll build one.
+                      Need to take something from zero to its first real paying
+                      users? Let&apos;s talk.
                     </p>
                   </div>
                 </div>
