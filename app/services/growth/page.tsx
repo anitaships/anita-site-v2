@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import SpatialBg from "../../components/SpatialBg";
@@ -117,6 +118,17 @@ const EMAIL = "anitaliu0818@gmail.com";
 export default function GrowthServicePage() {
   const { lang } = useLang();
   const c = COPY[lang];
+  const [copied, setCopied] = useState(false);
+
+  const copyWechat = () => {
+    navigator.clipboard?.writeText(WECHAT_ID).then(
+      () => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      },
+      () => {},
+    );
+  };
 
   return (
     <>
@@ -248,13 +260,17 @@ export default function GrowthServicePage() {
                 {c.ctaSub}
               </p>
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a
-                  href={`weixin://`}
+                <button
+                  onClick={copyWechat}
                   className="rounded-full bg-ink px-7 py-3 text-sm font-bold text-bg transition-transform duration-300 hover:-translate-y-0.5"
                   title={WECHAT_ID}
                 >
-                  {c.wechat}
-                </a>
+                  {copied
+                    ? lang === "zh"
+                      ? `已复制 ${WECHAT_ID}`
+                      : `Copied ${WECHAT_ID}`
+                    : `${c.wechat} · ${WECHAT_ID}`}
+                </button>
                 <a
                   href={CALENDLY_URL}
                   target="_blank"
