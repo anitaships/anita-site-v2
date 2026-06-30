@@ -5,73 +5,11 @@ import CursorGlow from "./components/CursorGlow";
 import CountUp from "./components/CountUp";
 
 const RESOURCES = [
-  {
-    icon: "network",
-    num: "5,000+",
-    t: "Overseas KOL network",
-    d: "Thousands of creators, reachable directly.",
-  },
-  {
-    icon: "globe",
-    num: "40+",
-    t: "Cross-border partnerships",
-    d: "Agencies, channels, co-branded courses — all proven.",
-  },
-  {
-    icon: "ai",
-    num: "43",
-    t: "Self-built AI tools",
-    d: "Machines handle the repetitive work; I make the calls.",
-  },
-  {
-    icon: "community",
-    num: "0 → 335",
-    t: "Social & community",
-    d: "Stood up from scratch, still running.",
-  },
+  { num: "5,000+", label: "Overseas KOL network" },
+  { num: "40+", label: "Cross-border partners" },
+  { num: "43", label: "Self-built AI tools" },
+  { num: "0 → 335", label: "Community, from zero" },
 ];
-
-function ResIcon({ name }: { name: string }) {
-  const common = {
-    width: 22,
-    height: 22,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.7,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-  if (name === "network")
-    return (
-      <svg {...common}>
-        <circle cx="12" cy="5" r="2.4" />
-        <circle cx="5" cy="18" r="2.4" />
-        <circle cx="19" cy="18" r="2.4" />
-        <path d="M12 7.4 6.6 15.8M12 7.4l5.4 8.4M7.4 18h9.2" />
-      </svg>
-    );
-  if (name === "globe")
-    return (
-      <svg {...common}>
-        <circle cx="12" cy="12" r="9" />
-        <path d="M3 12h18M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18" />
-      </svg>
-    );
-  if (name === "ai")
-    return (
-      <svg {...common}>
-        <rect x="4" y="4" width="16" height="16" rx="3" />
-        <path d="m8 9 3 3-3 3M13 15h3" />
-      </svg>
-    );
-  return (
-    <svg {...common}>
-      <path d="M21 11.5a8.5 8.5 0 0 1-12.2 7.7L3 21l1.8-5.8A8.5 8.5 0 1 1 21 11.5Z" />
-      <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" />
-    </svg>
-  );
-}
 
 const CHANNELS = [
   {
@@ -311,32 +249,23 @@ export default function Home() {
 
         {/* ───── WHAT I BRING ───── */}
         <section className="border-y border-line">
-          <div className="mx-auto max-w-5xl px-6 py-32">
+          <div className="mx-auto max-w-5xl px-6 py-24">
             <Reveal>
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-faint">
                 What I bring
               </p>
-              <h2 className="mb-16 text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] md:text-6xl">
-                I don&apos;t show up alone.
-                <br />A network shows up with me.
+              <h2 className="mb-14 text-3xl font-extrabold leading-[1.05] tracking-[-0.03em] md:text-5xl">
+                I don&apos;t show up alone. A network shows up with me.
               </h2>
             </Reveal>
-            <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid grid-cols-2 gap-y-12 md:grid-cols-4">
               {RESOURCES.map((r, i) => (
-                <Reveal key={r.t} delay={i * 0.08}>
-                  <div className="glass group h-full rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-emerald/30 hover:shadow-[0_20px_55px_-20px_rgba(47,174,111,0.3)]">
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line text-emerald transition-colors duration-300 group-hover:border-emerald/50">
-                        <ResIcon name={r.icon} />
-                      </span>
-                      <span className="accent-breathe text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">
-                        {r.num}
-                      </span>
-                    </div>
-                    <h3 className="mt-5 text-xl font-bold tracking-[-0.01em]">
-                      {r.t}
-                    </h3>
-                    <p className="mt-2 text-sm font-light text-muted">{r.d}</p>
+                <Reveal key={r.label} delay={i * 0.08} className="text-center">
+                  <div className="accent-breathe whitespace-nowrap text-4xl font-extrabold tracking-[-0.02em] md:text-5xl">
+                    {r.num}
+                  </div>
+                  <div className="mt-3 text-xs font-light tracking-wide text-muted md:text-sm">
+                    {r.label}
                   </div>
                 </Reveal>
               ))}
