@@ -3,6 +3,7 @@ import Reveal from "./components/Reveal";
 import AskBox from "./components/AskBox";
 import CursorGlow from "./components/CursorGlow";
 import CountUp from "./components/CountUp";
+import SpotlightCard from "./components/SpotlightCard";
 
 const RESOURCES = [
   { value: 5000, suffix: "+", label: "Creator network" },
@@ -178,9 +179,7 @@ export default function Home() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {CHANNELS.map((c, i) => (
                 <Reveal key={c.ch} delay={i * 0.13} y={52} scale={0.92}>
-                  <div className="glass group relative h-full overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-emerald/40 hover:shadow-[0_24px_60px_-24px_rgba(47,174,111,0.4)] active:scale-[0.98]">
-                    {/* 角落深空辉光：默认隐，hover 浮现 */}
-                    <div className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full bg-emerald/0 blur-3xl transition-all duration-500 group-hover:bg-emerald/20" />
+                  <SpotlightCard className="glass group relative h-full overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 hover:scale-[1.03] hover:border-emerald/40 hover:shadow-[0_24px_60px_-24px_rgba(47,174,111,0.4)] active:scale-[0.98]">
                     <div className="relative">
                       <div className="flex items-center gap-2.5">
                         <span className="h-1 w-6 rounded-full bg-gradient-to-r from-lemon to-emerald" />
@@ -203,7 +202,7 @@ export default function Home() {
                         {c.note}
                       </p>
                     </div>
-                  </div>
+                  </SpotlightCard>
                 </Reveal>
               ))}
             </div>
