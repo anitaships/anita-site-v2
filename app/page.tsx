@@ -64,21 +64,13 @@ export default function Home() {
             opacity: 0.5,
           }}
         />
-        {/* 中心柔光：屏幕中部偏上更亮 → 配合暗角形成「中间亮、四周暗」的空间感 */}
+        {/* 暗角：纯黑压四周边，不加任何白光雾（保持高黑白对比） */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 58% at 50% 38%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.03) 42%, transparent 72%)",
-          }}
-        />
-        {/* 暗角：很温柔，只压最外圈，不和大光打架 */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 95% 95% at 50% 38%, transparent 48%, #000000 100%)",
-            opacity: 0.92,
+              "radial-gradient(ellipse 100% 100% at 50% 40%, transparent 60%, #000000 100%)",
+            opacity: 0.95,
           }}
         />
         {/* 光标聚光 · 点阵：鼠标附近的点变亮（跟随 --mx/--my） */}
